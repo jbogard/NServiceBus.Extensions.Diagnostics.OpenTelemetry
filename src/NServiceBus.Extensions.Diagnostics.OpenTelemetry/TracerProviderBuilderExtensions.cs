@@ -5,10 +5,10 @@ namespace NServiceBus.Extensions.Diagnostics.OpenTelemetry
 {
     public static class TracerProviderBuilderExtensions
     {
-        public static TracerProviderBuilder AddNServiceBusAdapter(this TracerProviderBuilder builder)
-            => builder.AddNServiceBusAdapter(null);
+        public static TracerProviderBuilder AddNServiceBusInstrumentation(this TracerProviderBuilder builder)
+            => builder.AddNServiceBusInstrumentation(null);
 
-        public static TracerProviderBuilder AddNServiceBusAdapter(this TracerProviderBuilder builder, Action<NServiceBusInstrumentationOptions> configureInstrumentationOptions)
+        public static TracerProviderBuilder AddNServiceBusInstrumentation(this TracerProviderBuilder builder, Action<NServiceBusInstrumentationOptions> configureInstrumentationOptions)
         {
             var options = new NServiceBusInstrumentationOptions();
 
