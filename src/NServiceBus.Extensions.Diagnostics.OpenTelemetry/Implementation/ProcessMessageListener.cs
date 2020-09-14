@@ -28,10 +28,9 @@ namespace NServiceBus.Extensions.Diagnostics.OpenTelemetry.Implementation
 
             var settings = context.Builder.Build<ReadOnlySettings>();
 
-            activity.SetKind(ActivityKind.Consumer);
             activity.DisplayName = settings.LogicalAddress().ToString();
 
-            _activitySource.Start(activity);
+            _activitySource.Start(activity, ActivityKind.Consumer);
 
             if (activity.IsAllDataRequested)
             {

@@ -28,8 +28,6 @@ namespace NServiceBus.Extensions.Diagnostics.OpenTelemetry.Implementation
                 return;
             }
 
-            activity.SetKind(ActivityKind.Producer);
-
             context.Headers.TryGetValue(Headers.MessageIntent, out var intent);
 
             var routes = context.RoutingStrategies
@@ -46,7 +44,7 @@ namespace NServiceBus.Extensions.Diagnostics.OpenTelemetry.Implementation
 
             activity.DisplayName = operationName;
 
-            _activitySource.Start(activity);
+            _activitySource.Start(activity, ActivityKind.Producer);
 
             if (activity.IsAllDataRequested)
             {
