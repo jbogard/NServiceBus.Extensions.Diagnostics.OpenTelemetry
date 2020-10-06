@@ -12,11 +12,11 @@ You can configure OpenTelemetry (typically through the [OpenTelemetry.Extensions
 services.AddOpenTelemetry(builder => {
     builder
         // Configure exporters
-        .UseZipkin()
+        .UseZipkinExporter()
         // Configure adapters
-        .UseRequestAdapter()
-        .UseDependencyAdapter()
-        .AddNServiceBusAdapter(); // Adds NServiceBus OTel support
+        .AddAspNetCoreInstrumentation()
+        .AddSqlClientDependencyInstrumentation()
+        .AddNServiceBusInstrumentation(); // Adds NServiceBus OTel support
 });
 ```
 
@@ -29,10 +29,10 @@ By default, the message body is not logged to OTel. To change this, configure th
 services.AddOpenTelemetry(builder => {
     builder
         // Configure exporters
-        .UseZipkin()
+        .UseZipkinExporter()
         // Configure adapters
-        .UseRequestAdapter()
-        .UseDependencyAdapter()
-        .AddNServiceBusAdapter(opt => opt.CaptureMessageBody = true); // Adds NServiceBus OTel support
+        .AddAspNetCoreInstrumentation()
+        .AddSqlClientDependencyInstrumentation()
+        .AddNServiceBusInstrumentation(opt => opt.CaptureMessageBody = true); // Adds NServiceBus OTel support
 });
 ```
