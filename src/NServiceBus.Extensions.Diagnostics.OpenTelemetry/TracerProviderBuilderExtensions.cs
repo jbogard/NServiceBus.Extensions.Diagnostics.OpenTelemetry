@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace OpenTelemetry.Trace
+﻿namespace OpenTelemetry.Trace
 {
     public static class TracerProviderBuilderExtensions
     {
