@@ -4,7 +4,9 @@
 
 ## Usage
 
-The `NServiceBus.Extensions.Diagnostics.OpenTelemetry` package provides adapters to [OpenTelemetry](https://opentelemetry.io/).
+The `NServiceBus.Extensions.Diagnostics.OpenTelemetry` package provides an extension to [OpenTelemetry](https://opentelemetry.io/).
+
+It is a small wrapper to subscribe to the `ActivitySource` exposed as part of `NServiceBus.Extensions.Diagnostics`, and is not required to use as part of OpenTelemetry.
 
 You can configure OpenTelemetry (typically through the [OpenTelemetry.Extensions.Hosting](https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting) package).
 
@@ -12,27 +14,23 @@ You can configure OpenTelemetry (typically through the [OpenTelemetry.Extensions
 services.AddOpenTelemetry(builder => {
     builder
         // Configure exporters
-        .UseZipkinExporter()
+        .AddZipkinExporter()
         // Configure adapters
         .AddAspNetCoreInstrumentation()
-        .AddSqlClientDependencyInstrumentation()
+        .AddHttpClientInstrumentation()
         .AddNServiceBusInstrumentation(); // Adds NServiceBus OTel support
 });
 ```
 
-Since OTel is supported at the NServiceBus level, any transport that NServiceBus supports also supports OTel.
-This package supports the latest released alpha package on NuGet.
-
-By default, the message body is not logged to OTel. To change this, configure the options:
+This extension method only adds a source with the appropriate name:
 
 ```csharp
-services.AddOpenTelemetry(builder => {
-    builder
-        // Configure exporters
-        .UseZipkinExporter()
-        // Configure adapters
-        .AddAspNetCoreInstrumentation()
-        .AddSqlClientDependencyInstrumentation()
-        .AddNServiceBusInstrumentation(opt => opt.CaptureMessageBody = true); // Adds NServiceBus OTel support
-});
+public static TracerProviderBuilder AddNServiceBusInstrumentation(this TracerProviderBuilder builder)
+{
+    return builder.AddSource("NServiceBus.Extensions.Diagnostics");
+}
 ```
+
+Since OTel is supported at the NServiceBus level, any transport that NServiceBus supports also supports OTel.
+
+This package supports OpenTelemetry version `1.0.0-rc1.1`.
