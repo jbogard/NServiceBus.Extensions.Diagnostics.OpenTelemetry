@@ -33,4 +33,4 @@ public static TracerProviderBuilder AddNServiceBusInstrumentation(this TracerPro
 
 Since OTel is supported at the NServiceBus level, any transport that NServiceBus supports also supports OTel.
 
-This package supports OpenTelemetry version `1.0.0-rc1.1`.
+This package supports OpenTelemetry version `1.0.1`.
