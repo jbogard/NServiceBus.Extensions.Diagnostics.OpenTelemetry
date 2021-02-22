@@ -1,6 +1,9 @@
 # NServiceBus.Extensions.Diagnostics
 
-![CI](https://github.com/jbogard/NServiceBus.Extensions.Diagnostics/workflows/CI/badge.svg)
+![CI](https://github.com/jbogard/NServiceBus.Extensions.Diagnostics.OpenTelemetry/workflows/CI/badge.svg)
+[![NuGet](https://img.shields.io/nuget/dt/NServiceBus.Extensions.Diagnostics.OpenTelemetry.svg)](https://www.nuget.org/packages/NServiceBus.Extensions.Diagnostics.OpenTelemetry) 
+[![NuGet](https://img.shields.io/nuget/vpre/NServiceBus.Extensions.Diagnostics.OpenTelemetry.svg)](https://www.nuget.org/packages/NServiceBus.Extensions.Diagnostics.OpenTelemetry)
+[![MyGet (dev)](https://img.shields.io/myget/jbogard-ci/v/NServiceBus.Extensions.Diagnostics.OpenTelemetry.svg)](https://myget.org/gallery/jbogard-ci)
 
 ## Usage
 
