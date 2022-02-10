@@ -1,8 +1,7 @@
-﻿namespace OpenTelemetry.Trace
+﻿namespace OpenTelemetry.Trace;
+
+public static class TracerProviderBuilderExtensions
 {
-    public static class TracerProviderBuilderExtensions
-    {
-        public static TracerProviderBuilder AddNServiceBusInstrumentation(this TracerProviderBuilder builder) 
-            => builder.AddSource("NServiceBus.Extensions.Diagnostics");
-    }
+    public static TracerProviderBuilder AddNServiceBusInstrumentation(this TracerProviderBuilder builder) 
+        => builder.AddSource("NServiceBus.Extensions.Diagnostics");
 }
